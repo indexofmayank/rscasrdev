@@ -11,6 +11,6 @@ const usersRoutes = require("./routes/users-routes");
 
 app.use("/api/v1", product);
 app.use("/api/v1", carsRoutes);
-app.use("/app/v1", usersRoutes);
+app.use("/api/v1", usersRoutes);
 
 module.exports = app;
