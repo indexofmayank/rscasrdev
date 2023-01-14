@@ -2,7 +2,9 @@ const express = require("express");
 
 const {
     registerUser,
-    loginUser
+    loginUser,
+    getUserDetails,
+    logout
 } = require("../controllers/user-controllers");
 
 
@@ -16,6 +18,13 @@ router
     .route("/login")
     .post(loginUser);
 
+router
+    .route("/logout")
+    .get(logout);
+
+router
+    .route("/me")
+    .get(getUserDetails);
 
 
 module.exports = router;

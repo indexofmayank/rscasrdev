@@ -46,5 +46,25 @@ exports.loginUser = catchAsyncErrors( async (req, res, next ) => {
     sendToken(user, 200, res);
 });
 
+exports.logout = catchAsyncErrors( async (req, res, next) => {
+    res.cookie("token", null, {
+        expires: new Date(Date.now()),
+        httpOnly: true,
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "Logged Out",
+    });
+});
 
 
+// Get User Detail
+exports.getUserDetails = catchAsyncErrors( async (req, res, next ) => {
+    const user = await User.findById(req.user.id);
+
+    res.status(200).json({
+        success: true,
+        user,
+    });
+});
